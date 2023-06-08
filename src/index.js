@@ -1,7 +1,8 @@
 
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 import Notiflix from 'notiflix';
-
+import SlimSelect from 'slim-select';
+import '/node_modules/slim-select/dist/slimselect.css';
 
   const selector = document.querySelector(".breed-select");
 const catInfo = document.querySelector(".cat-info");
@@ -14,6 +15,9 @@ fetchBreeds().then(data => {data.forEach (cat => {
     option.value = cat.id;
     option.textContent =cat.name;
     selector.appendChild(option);
+});
+new SlimSelect({
+    select: selector
 });
 loader.classList.add("hidden");
 }).catch(error => {
